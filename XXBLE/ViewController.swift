@@ -176,7 +176,7 @@ extension ViewController: CBPeripheralDelegate {
         print("characteristic uuid:\(characteristic.uuid) value:\(String(describing: resultStr))")
         print("characteristic.value: \(String(describing: characteristic.value))")
         if lastString == resultStr! as String {
-            return;
+            return
         }
         
         // 操作的characteristic 保存
