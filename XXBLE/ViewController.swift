@@ -10,7 +10,7 @@ import UIKit
 import CoreBluetooth
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var bleStateLabel: UILabel!
     @IBOutlet weak var contactLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -26,13 +26,23 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         manager = CBCentralManager(delegate: self, queue: DispatchQueue.main)
+        //已经被系统或者其他APP连接上的设备数组
+        let connectedPeripherals = manager.retrieveConnectedPeripherals(withServices: [])
+        let _ = connectedPeripherals.map {
+            [weak self] p in
+            if let weakSelf = self {
+                weakSelf.equipmentArray.append(p)
+                weakSelf.tableView.reloadData()
+            }
+        }
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     @IBAction func disconnect(_ sender: Any) {
         guard let peripheral = connectedPeripheral else {
             return
@@ -45,7 +55,7 @@ class ViewController: UIViewController {
         tableView.reloadData()
         manager.scanForPeripherals(withServices: nil, options: nil)
     }
-
+    
     @IBAction func writeAction(_ sender: UIButton) {
         let data = "8888888".data(using: .utf8)
         viewController(self.connectedPeripheral, didWriteValueFor: self.characteristic, value: data!)
@@ -228,8 +238,8 @@ extension ViewController: CBPeripheralDelegate {
     func peripheral(_ peripheral: CBPeripheral, didDiscoverDescriptorsFor characteristic: CBCharacteristic, error: Error?) {
         print("didDiscoverDescriptorsFor")
     }
-
-
+    
+    
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
