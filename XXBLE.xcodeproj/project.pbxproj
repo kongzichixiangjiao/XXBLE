@@ -193,6 +193,7 @@
 				TargetAttributes = {
 					94C831AF1F3C2E3000F978A6 = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 8975PEGCVX;
 						ProvisioningStyle = Automatic;
 					};
 					94C831C31F3C2E3000F978A6 = {
@@ -412,6 +413,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 8975PEGCVX;
 				INFOPLIST_FILE = XXBLE/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jianan.XXBLE;
@@ -424,6 +426,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 8975PEGCVX;
 				INFOPLIST_FILE = XXBLE/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jianan.XXBLE;
